@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Ebook Creator Tool - Create Professional eBooks 100% Free | No Login Required</title>
+    <meta name="description" content="Create and sell professional eBooks instantly. 100% free ebook creator with automatic formatting, table of contents, and print-ready PDFs. No design skills needed.">
+    <meta name="keywords" content="free ebook creator, ebook maker online, create pdf ebook, ebook generator, sell ebooks, digital products">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FIX 1: Added proper Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4A6CF7 0%, #7F56D9 100%);
+            --accent-green: #22C55E;
+            --accent-orange: #FF9800;
+            --light-bg: #F9FAFB;
+            --dark-text: #1F2937;
+            --gray-text: #6B7280;
+            --white: #FFFFFF;
+            --border-color: #E5E7EB;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .trust-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: var(--light-bg);
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray-text);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 18px 40px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+        }
+        
+        /* Main Content Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+        
+        @media (max-width: 968px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Editor Section */
+        .editor-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            color: #7F56D9;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #7F56D9;
+            box-shadow: 0 0 0 3px rgba(127, 86, 217, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Chapter Management */
+        .chapters-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .chapter-item {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .chapter-item:hover {
+            border-color: var(--border-color);
+        }
+        
+        .chapter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-title {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+        
+        .remove-chapter {
+            background: #EF4444;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .remove-chapter:hover {
+            background: #DC2626;
+            transform: scale(1.1);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background: var(--light-bg);
+            color: var(--dark-text);
+            border: 2px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background: #E5E7EB;
+        }
+        
+        /* Design Controls */
+        .design-controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .control-group {
+            margin-bottom: 1rem;
+        }
+        
+        .theme-toggle {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .theme-btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .theme-btn.active {
+            border-color: #7F56D9;
+            background: rgba(127, 86, 217, 0.1);
+            font-weight: 600;
+        }
+        
+        .theme-btn:hover {
+            background: var(--light-bg);
+        }
+        
+        /* Preview Section */
+        .preview-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .ebook-preview {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            min-height: 600px;
+            padding: 2rem;
+            overflow-y: auto;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .ebook-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .ebook-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .ebook-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+        
+        .ebook-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray-text);
+            margin-bottom: 1rem;
+        }
+        
+        .ebook-author {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+            font-style: italic;
+        }
+        
+        .toc-container {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+        }
+        
+        .toc-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+        
+        .toc-list {
+            list-style: none;
+        }
+        
+        .toc-item {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .toc-item:before {
+            content: "•";
+            color: #7F56D9;
+            position: absolute;
+            left: 0;
+        }
+        
+        .chapter-content {
+            margin-bottom: 3rem;
+            page-break-inside: avoid;
+        }
+        
+        .chapter-title-preview {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--dark-text);
+        }
+        
+        .page-break {
+            height: 1px;
+            background: var(--border-color);
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .page-break:after {
+            content: "Page Break";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 10px;
+            color: var(--gray-text);
+            font-size: 0.8rem;
+        }
+        
+        /* Export Section */
+        .export-section {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .export-btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            background: white;
+            color: #7F56D9;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .export-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .export-btn.download {
+            background: var(--accent-green);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-line {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+        
+        .status-message {
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .success {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        /* Print Styles */
+        @media print {
+            header, .editor-section, .export-section, footer, .btn-group {
+                display: none !important;
+            }
+            
+            .ebook-preview {
+                border: none;
+                box-shadow: none;
+                min-height: auto;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .design-controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .export-buttons {
+                flex-direction: column;
+            }
+            
+            .export-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">📚 Free Online Ebook Creator</div>
+            <div class="tagline">Design stunning, sell-ready eBooks in minutes — No design skills, no login, no software needed.</div>
+            <div class="trust-badge">✅ 100% Free • No Login Required • Your Data Stays Private</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Create & Sell Professional eBooks Online</h1>
+            <p class="hero-subtitle">The only 100% free ebook creator with automatic formatting, table of contents, and print-ready PDFs. Perfect for Instagram sellers, coaches, and digital creators.</p>
+            <button class="cta-button" id="startCreatingBtn">
+                <i class="fas fa-magic"></i> Create Ebook Free
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Editor Section -->
+            <div class="editor-section">
+                <h2 class="section-title"><i class="fas fa-edit"></i> Ebook Content</h2>
+                
+                <!-- Basic Info -->
+                <!-- FIX 3: Removed default values, added professional placeholders -->
+                <div class="form-group">
+                    <label class="form-label">Ebook Title *</label>
+                    <input type="text" class="form-control" id="ebookTitle" placeholder="e.g., The Complete Guide to Digital Marketing" value="">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Author Name *</label>
+                    <input type="text" class="form-control" id="authorName" placeholder="e.g., Jane Smith" value="">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Subtitle</label>
+                    <input type="text" class="form-control" id="ebookSubtitle" placeholder="e.g., A Step-by-Step Guide for Beginners (optional)" value="">
+                </div>
+                
+                <!-- Chapters -->
+                <div class="form-group">
+                    <label class="form-label">Chapters</label>
+                    <div class="chapters-container" id="chaptersContainer">
+                        <!-- Chapters will be added here dynamically -->
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="addChapterBtn">
+                            <i class="fas fa-plus"></i> Add Chapter
+                        </button>
+                        <button class="btn btn-secondary" id="resetChaptersBtn">
+                            <i class="fas fa-redo"></i> Reset All
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Design Controls -->
+                <h2 class="section-title"><i class="fas fa-palette"></i> Design Settings</h2>
+                
+                <div class="design-controls">
+                    <div class="control-group">
+                        <label class="form-label">Font Family</label>
+                        <select class="form-control" id="fontFamily">
+                            <option value="'Poppins', sans-serif">Poppins (Modern)</option>
+                            <option value="'Inter', sans-serif">Inter (Professional)</option>
+                            <option value="Georgia, serif">Georgia (Classic)</option>
+                            <option value="Arial, sans-serif">Arial (Simple)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="form-label">Font Size</label>
+                        <select class="form-control" id="fontSize">
+                            <option value="14px">Small (14px)</option>
+                            <option value="16px" selected>Medium (16px)</option>
+                            <option value="18px">Large (18px)</option>
+                            <option value="20px">Extra Large (20px)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="form-label">Line Spacing</label>
+                        <select class="form-control" id="lineSpacing">
+                            <option value="1.5">Normal (1.5)</option>
+                            <option value="1.8">Wide (1.8)</option>
+                            <option value="2">Extra Wide (2)</option>
+                            <option value="1.2">Compact (1.2)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="form-label">Margins</label>
+                        <select class="form-control" id="margins">
+                            <option value="1rem">Small</option>
+                            <option value="2rem" selected>Medium</option>
+                            <option value="3rem">Large</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="form-label">Theme</label>
+                    <div class="theme-toggle">
+                        <div class="theme-btn active" data-theme="light">Light Theme</div>
+                        <div class="theme-btn" data-theme="dark">Dark Theme</div>
+                    </div>
+                </div>
+                
+                <!-- Generate Button -->
+                <button class="cta-button" id="generatePreviewBtn" style="width: 100%; margin-top: 2rem;">
+                    <i class="fas fa-sync-alt"></i> Update Preview
+                </button>
+            </div>
+            
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <h2 class="section-title"><i class="fas fa-eye"></i> Live Preview</h2>
+                <div class="ebook-preview" id="ebookPreview">
+                    <div class="ebook-content" id="ebookContent">
+                        <!-- Preview content will be generated here -->
+                        <div class="ebook-header">
+                            <h1 class="ebook-title">My Awesome Ebook</h1>
+                            <p class="ebook-subtitle">A Complete Guide to Success</p>
+                            <p class="ebook-author">By John Doe</p>
+                        </div>
+                        
+                        <div class="toc-container">
+                            <h3 class="toc-title">Table of Contents</h3>
+                            <ul class="toc-list">
+                                <li class="toc-item">Introduction</li>
+                                <li class="toc-item">Getting Started</li>
+                                <li class="toc-item">Advanced Techniques</li>
+                                <li class="toc-item">Conclusion</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="chapter-content">
+                            <h2 class="chapter-title-preview">Introduction</h2>
+                            <p>Welcome to this comprehensive guide. This ebook will teach you everything you need to know about creating amazing content.</p>
+                            <p>Each chapter builds upon the previous one, providing you with actionable insights and practical examples.</p>
+                        </div>
+                        
+                        <div class="page-break"></div>
+                        
+                        <div class="chapter-content">
+                            <h2 class="chapter-title-preview">Getting Started</h2>
+                            <p>Begin your journey by understanding the fundamentals. This chapter covers all the basics you need to get started.</p>
+                            <p>Remember: Every expert was once a beginner. Take your time and practice consistently.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Export Section -->
+    <section class="export-section">
+        <div class="container">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Download Your Ebook?</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">Generate a professional, print-ready PDF with one click. No watermarks, no limitations.</p>
+            
+            <div class="export-buttons">
+                <button class="export-btn download" id="downloadPdfBtn">
+                    <i class="fas fa-download"></i> Download PDF Ebook
+                </button>
+                <button class="export-btn" id="printEbookBtn">
+                    <i class="fas fa-print"></i> Print Ebook
+                </button>
+                <button class="export-btn" id="saveDraftBtn">
+                    <i class="fas fa-save"></i> Save as TXT
+                </button>
+            </div>
+            
+            <div class="status-message success hidden" id="exportStatus"></div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About This Tool</h3>
+                    <p>A 100% free ebook creator designed for digital creators, coaches, and entrepreneurs. No login required, no hidden fees.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-user"></i>
+                            <span>Deepak Rai</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>6202608187</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>deepakrai845101@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Features</h3>
+                    <ul style="list-style: none;">
+                        <li>✅ No Login Required</li>
+                        <li>✅ 100% Free Forever</li>
+                        <li>✅ Print-Ready PDFs</li>
+                        <li>✅ Auto Table of Contents</li>
+                        <li>✅ Mobile Responsive</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-line">
+                © 2025 Free Online Ebook Creator Tool – Built to empower digital creators worldwide.
+                <br>
+                <small style="opacity: 0.7;">All content created with this tool belongs to you. We never store or access your data.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize chapters data
+        let chapters = [
+            {
+                title: "Introduction",
+                content: "Welcome to this comprehensive guide. This ebook will teach you everything you need to know about creating amazing content.\n\nEach chapter builds upon the previous one, providing you with actionable insights and practical examples."
+            },
+            {
+                title: "Getting Started",
+                content: "Begin your journey by understanding the fundamentals. This chapter covers all the basics you need to get started.\n\nRemember: Every expert was once a beginner. Take your time and practice consistently."
+            },
+            {
+                title: "Advanced Techniques",
+                content: "Now that you've mastered the basics, let's dive into advanced techniques. This chapter will elevate your skills to the next level.\n\nPractice these techniques daily to see significant improvement in your results."
+            }
+        ];
+
+        // DOM Elements
+        const chaptersContainer = document.getElementById('chaptersContainer');
+        const ebookPreview = document.getElementById('ebookPreview');
+        const ebookContent = document.getElementById('ebookContent');
+        const exportStatus = document.getElementById('exportStatus');
+
+        // Variable to track current theme state for PDF restoration
+        let currentPreviewTheme = 'light';
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderChapters();
+            updatePreview();
+            setupEventListeners();
+        });
+
+        // Setup all event listeners
+        function setupEventListeners() {
+            // Start Creating Button
+            document.getElementById('startCreatingBtn').addEventListener('click', function() {
+                document.querySelector('.editor-section').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Add Chapter Button
+            document.getElementById('addChapterBtn').addEventListener('click', addNewChapter);
+
+            // Reset Chapters Button
+            document.getElementById('resetChaptersBtn').addEventListener('click', resetChapters);
+
+            // Generate Preview Button
+            document.getElementById('generatePreviewBtn').addEventListener('click', updatePreview);
+
+            // Download PDF Button
+            document.getElementById('downloadPdfBtn').addEventListener('click', downloadPDF);
+
+            // Print Ebook Button
+            document.getElementById('printEbookBtn').addEventListener('click', printEbook);
+
+            // Save Draft Button
+            document.getElementById('saveDraftBtn').addEventListener('click', saveAsTXT);
+
+            // Theme Toggle
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentPreviewTheme = this.dataset.theme;
+                    updatePreview();
+                });
+            });
+
+            // Real-time preview updates for design controls
+            ['fontFamily', 'fontSize', 'lineSpacing', 'margins'].forEach(id => {
+                document.getElementById(id).addEventListener('change', updatePreview);
+            });
+
+            // Real-time preview updates for title/author
+            ['ebookTitle', 'authorName', 'ebookSubtitle'].forEach(id => {
+                document.getElementById(id).addEventListener('input', updatePreview);
+            });
+        }
+
+        // Render chapters in editor
+        function renderChapters() {
+            chaptersContainer.innerHTML = '';
+            
+            chapters.forEach((chapter, index) => {
+                const chapterElement = document.createElement('div');
+                chapterElement.className = 'chapter-item';
+                chapterElement.innerHTML = `
+                    <div class="chapter-header">
+                        <div class="chapter-title">Chapter ${index + 1}: ${chapter.title}</div>
+                        ${chapters.length > 1 ? '<button class="remove-chapter" data-index="${index}">×</button>' : ''}
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Chapter Title</label>
+                        <input type="text" class="form-control chapter-title-input" 
+                               data-index="${index}" 
+                               value="${chapter.title}"
+                               placeholder="Enter chapter title">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Chapter Content</label>
+                        <textarea class="form-control chapter-content-input" 
+                                  data-index="${index}" 
+                                  rows="4"
+                                  placeholder="Enter chapter content...">${chapter.content}</textarea>
+                    </div>
+                `;
+                chaptersContainer.appendChild(chapterElement);
+            });
+
+            // Add event listeners to chapter inputs
+            document.querySelectorAll('.chapter-title-input').forEach(input => {
+                input.addEventListener('input', function() {
+                    const index = parseInt(this.dataset.index);
+                    chapters[index].title = this.value;
+                    updatePreview();
+                });
+            });
+
+            document.querySelectorAll('.chapter-content-input').forEach(textarea => {
+                textarea.addEventListener('input', function() {
+                    const index = parseInt(this.dataset.index);
+                    chapters[index].content = this.value;
+                    updatePreview();
+                });
+            });
+
+            document.querySelectorAll('.remove-chapter').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    removeChapter(index);
+                });
+            });
+        }
+
+        // Add new chapter
+        function addNewChapter() {
+            chapters.push({
+                title: `New Chapter ${chapters.length + 1}`,
+                content: "Start writing your chapter content here..."
+            });
+            renderChapters();
+            updatePreview();
+            
+            // Show success message
+            showStatus('New chapter added successfully!', 'success');
+        }
+
+        // Remove chapter
+        function removeChapter(index) {
+            if (chapters.length > 1) {
+                chapters.splice(index, 1);
+                renderChapters();
+                updatePreview();
+                showStatus('Chapter removed successfully!', 'success');
+            } else {
+                showStatus('You must have at least one chapter.', 'error');
+            }
+        }
+
+        // Reset all chapters
+        function resetChapters() {
+            if (confirm('Are you sure you want to reset all chapters? This cannot be undone.')) {
+                chapters = [{
+                    title: "Introduction",
+                    content: "Start writing your ebook content here..."
+                }];
+                renderChapters();
+                updatePreview();
+                showStatus('All chapters have been reset.', 'success');
+            }
+        }
+
+        // Update the preview
+        function updatePreview() {
+            const title = document.getElementById('ebookTitle').value || 'My Awesome Ebook';
+            const author = document.getElementById('authorName').value || 'Author Name';
+            const subtitle = document.getElementById('ebookSubtitle').value || '';
+            
+            // Update design controls
+            const fontFamily = document.getElementById('fontFamily').value;
+            const fontSize = document.getElementById('fontSize').value;
+            const lineSpacing = document.getElementById('lineSpacing').value;
+            const margins = document.getElementById('margins').value;
+            
+            // Apply styles to preview
+            ebookContent.style.fontFamily = fontFamily;
+            ebookContent.style.fontSize = fontSize;
+            ebookContent.style.lineHeight = lineSpacing;
+            ebookContent.style.padding = margins;
+            
+            // Apply current theme
+            if (currentPreviewTheme === 'dark') {
+                ebookPreview.style.backgroundColor = '#1F2937';
+                ebookPreview.style.color = '#F9FAFB';
+                ebookContent.style.color = '#F9FAFB';
+            } else {
+                ebookPreview.style.backgroundColor = 'white';
+                ebookPreview.style.color = '#1F2937';
+                ebookContent.style.color = '#1F2937';
+            }
+            
+            // Generate HTML for preview
+            let html = `
+                <div class="ebook-header">
+                    <h1 class="ebook-title">${escapeHtml(title)}</h1>
+                    ${subtitle ? `<p class="ebook-subtitle">${escapeHtml(subtitle)}</p>` : ''}
+                    <p class="ebook-author">By ${escapeHtml(author)}</p>
+                </div>
+            `;
+            
+            // Generate Table of Contents
+            if (chapters.length > 0) {
+                html += `
+                    <div class="toc-container">
+                        <h3 class="toc-title">Table of Contents</h3>
+                        <ul class="toc-list">
+                `;
+                
+                chapters.forEach((chapter, index) => {
+                    html += `<li class="toc-item">${escapeHtml(chapter.title)}</li>`;
+                });
+                
+                html += `
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Generate Chapters
+            chapters.forEach((chapter, index) => {
+                const contentWithParagraphs = chapter.content.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+                html += `
+                    <div class="chapter-content">
+                        <h2 class="chapter-title-preview">${escapeHtml(chapter.title)}</h2>
+                        <p>${contentWithParagraphs}</p>
+                    </div>
+                `;
+                
+                // Add page break between chapters (except after last)
+                if (index < chapters.length - 1) {
+                    html += '<div class="page-break"></div>';
+                }
+            });
+            
+            // FIX 4: Updated page number text
+            html += `
+                <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--gray-text); font-size: 0.9rem;">
+                    Generated Ebook
+                </div>
+            `;
+            
+            ebookContent.innerHTML = html;
+        }
+
+        // Download PDF
+        function downloadPDF() {
+            showStatus('Generating PDF... Please wait.', 'success');
+            
+            // FIX 2: Save current preview theme state
+            const originalTheme = currentPreviewTheme;
+            const originalBgColor = ebookPreview.style.backgroundColor;
+            const originalColor = ebookContent.style.color;
+            
+            // FIX 2: Force light theme for PDF generation
+            ebookPreview.style.backgroundColor = 'white';
+            ebookContent.style.color = '#1F2937';
+            
+            const element = document.getElementById('ebookPreview');
+            const title = document.getElementById('ebookTitle').value || 'My_Ebook';
+            const filename = `${title.replace(/\s+/g, '_')}_${Date.now()}.pdf`;
+            
+            const options = {
+                margin: [15, 15, 15, 15],
+                filename: filename,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#FFFFFF' // Force white background for PDF
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait' 
+                }
+            };
+            
+            html2pdf().set(options).from(element).save().then(() => {
+                showStatus('PDF downloaded successfully!', 'success');
+                
+                // FIX 2: Restore original preview theme state
+                if (originalTheme === 'dark') {
+                    ebookPreview.style.backgroundColor = '#1F2937';
+                    ebookContent.style.color = '#F9FAFB';
+                } else {
+                    ebookPreview.style.backgroundColor = 'white';
+                    ebookContent.style.color = '#1F2937';
+                }
+            }).catch(err => {
+                showStatus('Error generating PDF. Please try again.', 'error');
+                console.error('PDF generation error:', err);
+                
+                // FIX 2: Restore original preview theme state even on error
+                if (originalTheme === 'dark') {
+                    ebookPreview.style.backgroundColor = '#1F2937';
+                    ebookContent.style.color = '#F9FAFB';
+                } else {
+                    ebookPreview.style.backgroundColor = 'white';
+                    ebookContent.style.color = '#1F2937';
+                }
+            });
+        }
+
+        // Print ebook
+        function printEbook() {
+            window.print();
+        }
+
+        // Save as TXT
+        function saveAsTXT() {
+            const title = document.getElementById('ebookTitle').value || 'My_Ebook';
+            const author = document.getElementById('authorName').value || 'Anonymous';
+            const subtitle = document.getElementById('ebookSubtitle').value || '';
+            
+            let content = `${title}\n`;
+            if (subtitle) content += `${subtitle}\n`;
+            content += `By ${author}\n`;
+            content += '='.repeat(50) + '\n\n';
+            
+            content += 'TABLE OF CONTENTS\n';
+            chapters.forEach((chapter, index) => {
+                content += `${index + 1}. ${chapter.title}\n`;
+            });
+            
+            content += '\n' + '='.repeat(50) + '\n\n';
+            
+            chapters.forEach((chapter, index) => {
+                content += `CHAPTER ${index + 1}: ${chapter.title}\n`;
+                content += '-'.repeat(40) + '\n';
+                content += chapter.content + '\n\n';
+            });
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title.replace(/\s+/g, '_')}_${Date.now()}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showStatus('Text file downloaded successfully!', 'success');
+        }
+
+        // Show status message
+        function showStatus(message, type) {
+            exportStatus.textContent = message;
+            exportStatus.className = `status-message ${type}`;
+            exportStatus.classList.remove('hidden');
+            
+            setTimeout(() => {
+                exportStatus.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Utility function to escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // FIX 1: Removed Font Awesome JavaScript style injection
+        // All icons now work via the CDN link in <head>
+    </script>
+</body>
+</html>
